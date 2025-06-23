@@ -63,16 +63,16 @@ const EarthEvents = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-600 via-green-200 to-cyan-800">
-            <div className="max-w-7xl mx-auto px-4 py-8">
+            <div className="w-full px-2 py-6 sm:px-4 sm:py-8 max-w-full mx-auto">
                 {/* Header */}
-                <div className="text-center mb-12">
-                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-400 to-green-500 rounded-full mb-6 shadow-lg">
-                        <span className="text-4xl">🌍</span>
+                <div className="text-center mb-8 sm:mb-12">
+                    <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-400 to-green-500 rounded-full mb-4 sm:mb-6 shadow-lg">
+                        <span className="text-3xl sm:text-4xl">🌍</span>
                     </div>
-                    <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-green-700 bg-clip-text text-transparent mb-4">
+                    <h1 className="text-2xl sm:text-5xl font-bold bg-gradient-to-r from-blue-600 to-green-700 bg-clip-text text-transparent mb-2 sm:mb-4">
                         Earth Events Dashboard
                     </h1>
-                    <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+                    <p className="text-base sm:text-xl text-gray-700 max-w-2xl mx-auto">
                         Real-time Earth events and natural phenomena from NASA's EONET
                     </p>
                 </div>
@@ -92,14 +92,14 @@ const EarthEvents = () => {
                 {eventsLoading ? (
                     <div className="flex justify-center items-center h-64">
                         <div className="relative">
-                            <div className="animate-spin rounded-full h-16 w-16 border-4 border-blue-200 border-t-blue-600"></div>
+                            <div className="animate-spin rounded-full h-12 w-12 sm:h-16 sm:w-16 border-4 border-blue-200 border-t-blue-600"></div>
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-2xl">🌍</span>
+                                <span className="text-xl sm:text-2xl">🌍</span>
                             </div>
                         </div>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
                         {eventsData?.events?.map((event) => (
                             <EarthEventCard
                                 key={event.id}
@@ -111,14 +111,14 @@ const EarthEvents = () => {
                 )}
 
                 {eventsData?.events?.length === 0 && !eventsLoading && (
-                    <div className="text-center py-16">
-                        <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-blue-100 to-green-200 rounded-full mb-6">
-                            <span className="text-6xl">🌍</span>
+                    <div className="text-center py-12 sm:py-16">
+                        <div className="inline-flex items-center justify-center w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-blue-100 to-green-200 rounded-full mb-4 sm:mb-6">
+                            <span className="text-4xl sm:text-6xl">🌍</span>
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                        <h3 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">
                             No events found
                         </h3>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-gray-600 text-base sm:text-lg">
                             Try adjusting your filters to see more events.
                         </p>
                     </div>

@@ -137,8 +137,8 @@ const MarsWeather = () => {
         <div className="min-h-screen bg-gradient-to-b from-gray-900 via-red-950 to-black text-white">
             {/* Header */}
             <header className="border-b border-red-900/50 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
-                <div className="container mx-auto px-4 py-4">
-                    <div className="flex items-center justify-between">
+                <div className="w-full px-4 py-4 max-w-full">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                         <div className="flex items-center space-x-4">
                             <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center font-bold text-xl">
                                 M
@@ -150,14 +150,14 @@ const MarsWeather = () => {
                                 <p className="text-gray-400 text-sm">InSight Lander • Sol {selectedSol.sol}</p>
                             </div>
                         </div>
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-4 w-full sm:w-auto justify-between sm:justify-end">
                             <div className="flex items-center space-x-2 text-green-400">
                                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                                 <span className="text-sm">LIVE</span>
                             </div>
                             <button
                                 onClick={() => setShowPostcard(true)}
-                                className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 px-4 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105"
+                                className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 px-4 py-2 rounded-lg font-medium transition-all duration-200 transform hover:scale-105 min-w-[120px]"
                             >
                                 Create Postcard
                             </button>
@@ -167,10 +167,10 @@ const MarsWeather = () => {
             </header>
 
             {/* Main Content */}
-            <main className="container mx-auto px-4 py-8 space-y-8">
+            <main className="w-full px-2 py-6 sm:px-4 sm:py-8 space-y-8 max-w-full">
                 {/* Sol Timeline */}
                 <section>
-                    <h2 className="text-xl font-semibold mb-4 flex items-center space-x-2">
+                    <h2 className="text-lg sm:text-xl font-semibold mb-4 flex items-center space-x-2">
                         <span>🌍</span>
                         <span>Mars Sol Timeline</span>
                     </h2>
@@ -188,7 +188,7 @@ const MarsWeather = () => {
 
                 {/* Earth Comparison */}
                 <section>
-                    <h2 className="text-xl font-semibold mb-4 flex items-center space-x-2">
+                    <h2 className="text-lg sm:text-xl font-semibold mb-4 flex items-center space-x-2">
                         <span>🌍</span>
                         <span>Earth vs Mars Comparison</span>
                     </h2>

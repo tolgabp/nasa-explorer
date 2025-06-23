@@ -88,16 +88,16 @@ const SpaceWeather = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-purple-200 via-indigo-300 to-blue-500">
-            <div className="max-w-7xl mx-auto px-4 py-8">
+            <div className="w-full px-2 py-6 sm:px-4 sm:py-8 max-w-full mx-auto">
                 {/* Header */}
-                <div className="text-center mb-12">
-                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full mb-6 shadow-lg">
-                        <span className="text-4xl">🌌</span>
+                <div className="text-center mb-8 sm:mb-12">
+                    <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full mb-4 sm:mb-6 shadow-lg">
+                        <span className="text-3xl sm:text-4xl">🌌</span>
                     </div>
-                    <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-indigo-700 bg-clip-text text-transparent mb-4">
+                    <h1 className="text-2xl sm:text-5xl font-bold bg-gradient-to-r from-purple-600 to-indigo-700 bg-clip-text text-transparent mb-2 sm:mb-4">
                         Space Weather Hub
                     </h1>
-                    <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+                    <p className="text-base sm:text-xl text-gray-700 max-w-2xl mx-auto">
                         Real-time space weather events and solar activity from NASA's DONKI
                     </p>
                 </div>
@@ -122,14 +122,14 @@ const SpaceWeather = () => {
                 {isLoading ? (
                     <div className="flex justify-center items-center h-64">
                         <div className="relative">
-                            <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-200 border-t-purple-600"></div>
+                            <div className="animate-spin rounded-full h-12 w-12 sm:h-16 sm:w-16 border-4 border-purple-200 border-t-purple-600"></div>
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-2xl">🌌</span>
+                                <span className="text-xl sm:text-2xl">🌌</span>
                             </div>
                         </div>
                     </div>
                 ) : (
-                    <div className="space-y-8">
+                    <div className="space-y-6 sm:space-y-8">
                         {notificationsData?.map((event, index) => (
                             <SpaceWeatherCard
                                 key={index}
@@ -140,14 +140,14 @@ const SpaceWeather = () => {
                 )}
 
                 {notificationsData?.length === 0 && !isLoading && (
-                    <div className="text-center py-16">
-                        <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-purple-100 to-indigo-200 rounded-full mb-6">
-                            <span className="text-6xl">🌌</span>
+                    <div className="text-center py-12 sm:py-16">
+                        <div className="inline-flex items-center justify-center w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-purple-100 to-indigo-200 rounded-full mb-4 sm:mb-6">
+                            <span className="text-4xl sm:text-6xl">🌌</span>
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                        <h3 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">
                             No space weather events found
                         </h3>
-                        <p className="text-gray-600 text-lg">
+                        <p className="text-gray-600 text-base sm:text-lg">
                             Try adjusting your filters or date range to see more events.
                         </p>
                     </div>

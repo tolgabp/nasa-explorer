@@ -74,13 +74,13 @@ const APODGallery = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900">
-            <div className="max-w-7xl mx-auto px-4 py-8">
+            <div className="w-full px-2 py-6 sm:px-4 sm:py-8 max-w-full mx-auto">
                 {/* Header */}
-                <div className="text-center mb-8">
-                    <h1 className="text-4xl font-bold text-white mb-4">
+                <div className="text-center mb-6 sm:mb-8">
+                    <h1 className="text-2xl sm:text-4xl font-bold text-white mb-2 sm:mb-4">
                         🌌 Astronomy Picture of the Day Gallery
                     </h1>
-                    <p className="text-xl text-gray-300">
+                    <p className="text-base sm:text-xl text-gray-300">
                         Explore stunning cosmic imagery from NASA's APOD collection
                     </p>
                 </div>
@@ -99,10 +99,10 @@ const APODGallery = () => {
                 {/* Images */}
                 {isLoading ? (
                     <div className="flex justify-center items-center h-64">
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-400"></div>
+                        <div className="animate-spin rounded-full h-10 w-10 sm:h-12 sm:w-12 border-b-2 border-purple-400"></div>
                     </div>
                 ) : (
-                    <div className={isRandomMode && viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' : 'space-y-6'}>
+                    <div className={isRandomMode && viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6' : 'space-y-4 sm:space-y-6'}>
                         {images?.map((image, index) => (
                             <APODImageCard
                                 key={index}
@@ -117,12 +117,12 @@ const APODGallery = () => {
                 )}
 
                 {images?.length === 0 && !isLoading && (
-                    <div className="text-center py-12">
-                        <div className="text-6xl mb-4">🌌</div>
-                        <h3 className="text-xl font-semibold text-white mb-2">
+                    <div className="text-center py-8 sm:py-12">
+                        <div className="text-4xl sm:text-6xl mb-2 sm:mb-4">🌌</div>
+                        <h3 className="text-lg sm:text-xl font-semibold text-white mb-1 sm:mb-2">
                             No images found
                         </h3>
-                        <p className="text-gray-400">
+                        <p className="text-gray-400 text-base sm:text-lg">
                             Try adjusting your filters to see more images.
                         </p>
                     </div>
