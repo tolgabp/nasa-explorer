@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'sonner';
@@ -50,6 +50,7 @@ const App = () => {
 
 const Navigation = () => {
     const location = useLocation();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     
     const isActive = (path) => {
         if (path === '/') return location.pathname === '/';
@@ -96,16 +97,39 @@ const Navigation = () => {
                             </Link>
                         ))}
                     </div>
-                    
                     {/* Mobile menu button */}
                     <div className="md:hidden">
-                        <button className="text-gray-300 hover:text-white p-2">
+                        <button
+                            className="text-gray-300 hover:text-white p-2"
+                            onClick={() => setIsMenuOpen((open) => !open)}
+                            aria-label="Open menu"
+                        >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
                         </button>
                     </div>
                 </div>
+                {/* Mobile menu */}
+                {isMenuOpen && (
+                    <div className="md:hidden flex flex-col space-y-2 pb-4">
+                        {navItems.map((item) => (
+                            <Link
+                                key={item.path}
+                                to={item.path}
+                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                                    isActive(item.path)
+                                        ? `bg-gradient-to-r ${item.color} text-white shadow-lg`
+                                        : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+                                }`}
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                <span className="mr-2">{item.icon}</span>
+                                {item.label}
+                            </Link>
+                        ))}
+                    </div>
+                )}
             </div>
         </nav>
     );
