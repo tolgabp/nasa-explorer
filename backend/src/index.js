@@ -35,6 +35,7 @@ app.use(helmet({
             styleSrc: ["'self'", "'unsafe-inline'"],
             scriptSrc: ["'self'"],
             imgSrc: ["'self'", "data:", "https:", "http:"],
+            connectSrc: ["'self'", "https://api.openweathermap.org"],
         },
     },
 }));
