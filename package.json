@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "NASA Explorer - A comprehensive space exploration application",
   "scripts": {
-    "build": "cd frontend && npm install && npm run build",
+    "build": "cd frontend && npm install --production=false && npm run build",
     "start": "cd backend && npm start",
-    "postinstall": "cd backend && npm install",
+    "postinstall": "cd backend && npm install --production=false",
     "heroku-postbuild": "npm run build"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "npm": ">=8.0.0"
+    "node": "18.x",
+    "npm": "9.x"
   },
   "cacheDirectories": [
     "frontend/node_modules",
