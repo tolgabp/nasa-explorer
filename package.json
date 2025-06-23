@@ -1,10 +1,19 @@
 {
-  "name": "nasa-explorer",
+  "name": "nasa-explorer-v2",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "NASA Explorer - A comprehensive space exploration application",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd backend && npm start",
+    "postinstall": "cd backend && npm install",
+    "heroku-postbuild": "npm run build"
   },
-  "private": true
-}
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "cacheDirectories": [
+    "frontend/node_modules",
+    "backend/node_modules"
+  ]
+} 
