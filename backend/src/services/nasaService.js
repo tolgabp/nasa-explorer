@@ -164,7 +164,19 @@ const nasaService = {
                 const defaultParams = { limit: 20, days: 30, status: 'open', ...params };
                 const url = buildEonetUrl(NASA_CONFIG.ENDPOINTS.EONET_EVENTS, defaultParams);
                 const response = await eonetApi.get(url);
-                return response.data;
+                let data = response.data;
+
+                // Backend-side category filtering
+                if (params.category && params.category !== 'all') {
+                    const categoryParam = params.category.toLowerCase();
+                    data.events = data.events.filter(event =>
+                        event.categories && event.categories.some(cat =>
+                            cat.id?.toString().toLowerCase() === categoryParam ||
+                            cat.title?.toLowerCase() === categoryParam
+                        )
+                    );
+                }
+                return data;
             } catch (error) {
                 throw createError.nasaAPI('Failed to fetch EONET events', error.response?.status, error.response?.data);
             }
