@@ -2,23 +2,17 @@
 
 A comprehensive full-stack space exploration application that provides real-time access to NASA's vast collection of space data. Explore Mars weather, Astronomy Picture of the Day, Earth events, and space weather through an intuitive, modern interface.
 
-## 🌟 Live Demo
+## Live Demo
 
 **Production Deployment:** [https://nasa-explorer-bb11a4ed8b3a.herokuapp.com/](https://nasa-explorer-bb11a4ed8b3a.herokuapp.com/)
 
 ## 📱 App Screenshots & Demos
 
+### 🎯 Onboarding Experience
+![Onboarding](screenshots/onboarding.gif)
+
 ### 🏠 Homepage & Navigation
 ![Homepage](screenshots/homePage.gif)
-
-### 🌌 Space Weather Hub
-![Space Weather Hub](screenshots/SpaceWeatherHub.gif)
-
-### 🛰️ Astronomy Picture of the Day (APOD) Gallery
-![APOD Gallery](screenshots/APOD%20Gallery.gif)
-
-### 🌍 Earth Events Tracker
-![Earth Events](screenshots/EarthEvents.gif)
 
 ### 🔴 Mars Weather Analytics
 ![Mars Weather Analytics](screenshots/MarsWeather-Analytics.gif)
@@ -29,8 +23,14 @@ A comprehensive full-stack space exploration application that provides real-time
 ### 📮 Mars Weather Postcard Generator
 ![Mars Weather Postcard](screenshots/MarsWeatherPostcard.gif)
 
-### 🎯 Onboarding Experience
-![Onboarding](screenshots/onboarding.gif)
+### 🌍 Earth Events Tracker
+![Earth Events](screenshots/EarthEvents.gif)
+
+### 🌠 Space Weather Hub
+![Space Weather Hub](screenshots/SpaceWeatherHub.gif)
+
+### 🛰️ Astronomy Picture of the Day (APOD) Gallery
+![APOD Gallery](screenshots/APOD%20Gallery.gif)
 
 ## ✨ Features
 
@@ -40,6 +40,12 @@ A comprehensive full-stack space exploration application that provides real-time
 - **Comprehensive data**: Temperature, pressure, wind speed, and direction
 - **Data quality indicators** showing sensor reliability
 - **Mars-appropriate weather conditions** based on actual sensor data
+
+### 🔄 Earth vs Mars Comparison
+- **Side-by-side weather comparison**
+- **Real-time Earth weather** via OpenWeatherMap API
+- **Interactive comparison widgets**
+- **Geolocation-based Earth data**
 
 ### 🛰️ Astronomy Picture of the Day (APOD)
 - **Daily space images** from NASA's curated collection
@@ -53,19 +59,13 @@ A comprehensive full-stack space exploration application that provides real-time
 - **Real-time event updates** with status tracking
 - **Interactive maps** and event statistics
 
-### 🌌 Space Weather Monitor
+### 🌠 Space Weather Monitor
 - **Solar activity tracking** via NASA's DONKI system
 - **Geomagnetic storm alerts**
 - **Solar flare monitoring**
 - **Space weather notifications**
 
-### 🔄 Earth vs Mars Comparison
-- **Side-by-side weather comparison**
-- **Real-time Earth weather** via OpenWeatherMap API
-- **Interactive comparison widgets**
-- **Geolocation-based Earth data**
-
-## 🏗️ Architecture
+## Architecture
 
 ```
 ├── frontend/          # React.js application
@@ -256,18 +256,49 @@ npm test -- --coverage     # Run tests with coverage
 
 This project is licensed under the ISC License.
 
-## 🙏 Acknowledgments
+## Technologies
 
-- [NASA APIs](https://api.nasa.gov/) for providing access to space data
-- [OpenWeatherMap](https://openweathermap.org/) for Earth weather data
-- [React](https://reactjs.org/) for the frontend framework
-- [Express.js](https://expressjs.com/) for the backend framework
-- [Heroku](https://heroku.com/) for hosting
+### Frontend
+- **React** ([reactjs.org](https://reactjs.org/)) — for the frontend framework.
+- **React Router** ([reactrouter.com](https://reactrouter.com/)) — for client-side routing.
+- **React Query** ([tanstack.com/query](https://tanstack.com/query)) — for data fetching and caching.
+- **Recharts** ([recharts.org](https://recharts.org/)) — for data visualization and charts.
+- **Sonner** ([sonner.emilkowal.ski](https://sonner.emilkowal.ski/)) — for toast notifications.
+- **Tailwind CSS** ([tailwindcss.com](https://tailwindcss.com/)) — for rapid UI styling.
+- **Lucide React** ([lucide.dev](https://lucide.dev/)) — for beautiful icons.
+- **HTML2Canvas** ([html2canvas.hertzen.com](https://html2canvas.hertzen.com/)) — for DOM to canvas conversion.
+- **jsPDF** ([artskydj.github.io/jsPDF/docs/](https://artskydj.github.io/jsPDF/docs/)) — for PDF generation.
+
+### Backend
+- **Express.js** ([expressjs.com](https://expressjs.com/)) — for the backend framework.
+- **Express.js Best Practices** ([expressjs.com/en/advanced/best-practice-performance.html](https://expressjs.com/en/advanced/best-practice-performance.html)) — for production performance guidelines.
+- **Helmet** ([helmetjs.github.io](https://helmetjs.github.io/)) — for securing HTTP headers.
+- **Compression** ([npmjs.com/package/compression](https://www.npmjs.com/package/compression)) — for response compression.
+- **CORS** ([npmjs.com/package/cors](https://www.npmjs.com/package/cors)) — for cross-origin resource sharing.
+- **express-validator** ([express-validator.github.io](https://express-validator.github.io/)) — for input validation.
+- **dotenv** ([npmjs.com/package/dotenv](https://www.npmjs.com/package/dotenv)) — for environment variable management.
+
+### Testing
+- **Jest** ([jestjs.io](https://jestjs.io/)) — for testing.
+- **React Testing Library** ([testing-library.com/docs/react-testing-library/intro/](https://testing-library.com/docs/react-testing-library/intro/)) — for frontend testing.
+- **Supertest** ([npmjs.com/package/supertest](https://www.npmjs.com/package/supertest)) — for API testing.
+
+### Tools & Services
+- **NASA APIs** ([api.nasa.gov](https://api.nasa.gov/)) — for providing open access to space and planetary data.
+- **OpenWeatherMap** ([openweathermap.org](https://openweathermap.org/)) — for Earth weather data.
+- **GitHub** ([github.com](https://github.com/)) — for code hosting and collaboration.
+- **Heroku** ([heroku.com](https://heroku.com/)) — for hosting and deployment.
+- **Git LFS** ([git-lfs.github.com](https://git-lfs.github.com/)) — for large file storage.
+- **QuickTime Player** — for recording demo GIFs.
+
+### Resources & Community
+- **MDN Web Docs** ([developer.mozilla.org](https://developer.mozilla.org/)) — for web standards and documentation.
+- **Open Source Community** — for libraries, tools, and inspiration.
 
 ## 📞 Support
 
 If you encounter any issues or have questions:
-1. Check the [Issues](https://github.com/tolgabp/lastProject/issues) page
+1. Check the [Issues](https://github.com/tolgabp/nasa-explorer/issues) page
 2. Create a new issue with detailed information
 3. Include error messages and steps to reproduce
 
