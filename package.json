@@ -1,0 +1,19 @@
+{
+  "name": "nasa-explorer-v2",
+  "version": "1.0.0",
+  "description": "NASA Explorer - A comprehensive space exploration application",
+  "scripts": {
+    "build": "cd frontend && npm install --production=false && npm run build",
+    "start": "cd backend && npm start",
+    "postinstall": "cd backend && npm install --production=false",
+    "heroku-postbuild": "npm run build"
+  },
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
+  },
+  "cacheDirectories": [
+    "frontend/node_modules",
+    "backend/node_modules"
+  ]
+} 

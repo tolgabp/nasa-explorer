@@ -1,0 +1,36 @@
+{
+  "name": "NASA Explorer",
+  "description": "A comprehensive space exploration application featuring Mars weather, APOD, Earth events, and space weather data",
+  "repository": "https://github.com/yourusername/nasa-explorer-v2",
+  "logo": "https://cdn-icons-png.flaticon.com/512/3212/3212564.png",
+  "keywords": ["nasa", "space", "mars", "weather", "react", "node", "express"],
+  "env": {
+    "NODE_ENV": {
+      "description": "Environment setting",
+      "value": "production"
+    },
+    "NASA_API_KEY": {
+      "description": "Your NASA API key from https://api.nasa.gov/",
+      "required": true
+    },
+    "FRONTEND_URL": {
+      "description": "Frontend URL for CORS (will be auto-set by Heroku)",
+      "required": false
+    },
+    "LOG_LEVEL": {
+      "description": "Logging level",
+      "value": "info"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+} 
