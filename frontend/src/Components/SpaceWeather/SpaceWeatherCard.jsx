@@ -15,6 +15,20 @@ const SpaceWeatherCard = ({ event }) => {
         return iconMap[type] || '🌌';
     };
 
+    const getEventDisplayName = (type) => {
+        const nameMap = {
+            'CME': 'Coronal Mass Ejection',
+            'FLR': 'Solar Flare',
+            'GST': 'Geomagnetic Storm',
+            'SEP': 'Solar Energetic Particles',
+            'IPS': 'Interplanetary Shock',
+            'MPC': 'Magnetopause Crossing',
+            'RBE': 'Radiation Belt Enhancement',
+            'HSS': 'High Speed Stream'
+        };
+        return nameMap[type] || 'Report Event';
+    };
+
     const getSeverityColor = (type, intensity) => {
         if (type === 'FLR' && intensity) {
             if (intensity.includes('X')) return 'text-red-600 bg-red-100 border-red-200';
@@ -55,38 +69,38 @@ const SpaceWeatherCard = ({ event }) => {
 
     return (
         <div className="group relative">
-            <div className={`absolute inset-0 bg-gradient-to-br ${getEventTypeColor(event.messageType)} rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
-            <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-white/20">
-                <div className="p-8">
-                    <div className="flex items-start justify-between mb-6">
+            <div className={`absolute inset-0 bg-gradient-to-br ${getEventTypeColor(event.messageType)} rounded-xl blur-lg opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+            <div className="relative bg-white/90 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-white/20">
+                <div className="p-6">
+                    <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center">
-                            <div className="text-4xl mr-6 drop-shadow-lg">
+                            <div className="text-3xl mr-4 drop-shadow-lg">
                                 {getEventIcon(event.messageType)}
                             </div>
                             <div>
-                                <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-purple-700 transition-colors duration-200">
-                                    {event.messageType} Event
+                                <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-purple-700 transition-colors duration-200">
+                                    {getEventDisplayName(event.messageType)}
                                 </h3>
-                                <p className="text-lg text-gray-600">
+                                <p className="text-base text-gray-600">
                                     {formatDate(event.messageIssueTime)}
                                 </p>
                             </div>
                         </div>
-                        <span className={`px-4 py-2 rounded-full text-sm font-semibold border-2 ${getSeverityColor(event.messageType, event.messageBody)}`}>
-                            {event.messageType}
+                        <span className={`px-3 py-1 rounded-full text-sm font-semibold border ${getSeverityColor(event.messageType, event.messageBody)}`}>
+                            {getEventDisplayName(event.messageType)}
                         </span>
                     </div>
                     
-                    <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-6 mb-6 border border-purple-100">
-                        <p className="text-gray-800 whitespace-pre-wrap text-lg leading-relaxed">
+                    <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-4 mb-4 border border-purple-100">
+                        <p className="text-gray-800 whitespace-pre-wrap text-base leading-relaxed">
                             {event.messageBody}
                         </p>
                     </div>
                     
                     <div className="flex items-center justify-between text-sm">
-                        <div className="bg-gray-100/50 rounded-lg px-4 py-2">
+                        <div className="bg-gray-100/50 rounded px-3 py-2">
                             <span className="font-semibold text-gray-700">URL:</span>
-                            <span className="ml-2 text-gray-600">{event.messageURL}</span>
+                            <span className="ml-2 text-gray-600 truncate max-w-md">{event.messageURL}</span>
                         </div>
                     </div>
                 </div>

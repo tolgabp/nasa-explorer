@@ -141,8 +141,8 @@ const MarsWeather = () => {
                 <div className="w-full px-4 py-4 max-w-full">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                         <div className="flex items-center space-x-4">
-                            <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center font-bold text-xl">
-                                M
+                            <div className="w-12 h-12 bg-gradient-to-br from-orange-300 to-red-800 rounded-full flex items-center justify-center font-bold text-xl">
+                                ☄️
                             </div>
                             <div>
                                 <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">

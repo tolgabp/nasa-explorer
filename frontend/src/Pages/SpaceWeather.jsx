@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { API_BASE_URL } from '../config/api';
-import { SpaceWeatherCard, SpaceWeatherStats, SpaceWeatherFilters } from '../Components/SpaceWeather';
+import { SpaceWeatherCard, SpaceWeatherFilters } from '../Components/SpaceWeather';
 
 const SpaceWeather = () => {
     const [selectedType, setSelectedType] = useState('all');
@@ -14,11 +14,16 @@ const SpaceWeather = () => {
             const endDate = new Date().toISOString().split('T')[0];
             const startDate = new Date(Date.now() - dateRange * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
             
+            // Only send type parameter if it's not 'all' or 'other'
             const params = new URLSearchParams({
                 startDate,
-                endDate,
-                type: selectedType
+                endDate
             });
+            
+            // Add type parameter only if a specific type is selected (not 'all' or 'other')
+            if (selectedType !== 'all' && selectedType !== 'other') {
+                params.append('type', selectedType);
+            }
             
             const response = await fetch(`${API_BASE_URL}/api/donki/notifications?${params}`);
             if (!response.ok) throw new Error('Failed to fetch notifications');
@@ -27,6 +32,28 @@ const SpaceWeather = () => {
         staleTime: 10 * 60 * 1000, // 10 minutes
     });
 
+    // Filter data based on selected type
+    const filteredData = React.useMemo(() => {
+        if (!notificationsData) return [];
+        
+        // Define known event types inside useMemo to avoid dependency issues
+        const knownEventTypes = ['CME', 'FLR', 'GST', 'SEP', 'IPS', 'MPC', 'RBE', 'HSS'];
+        
+        if (selectedType === 'all') {
+            return notificationsData;
+        } else if (selectedType === 'other') {
+            // Show only unknown event types
+            return notificationsData.filter(event => 
+                !knownEventTypes.includes(event.messageType)
+            );
+        } else {
+            // Show only the selected event type
+            return notificationsData.filter(event => 
+                event.messageType === selectedType
+            );
+        }
+    }, [notificationsData, selectedType]);
+
     const isLoading = notificationsLoading;
 
     return (
@@ -34,8 +61,8 @@ const SpaceWeather = () => {
             <div className="w-full px-2 py-6 sm:px-4 sm:py-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="text-center mb-8 sm:mb-12">
-                    <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-purple-400 to-indigo-500 rounded-full mb-4 sm:mb-6 shadow-lg">
-                        <span className="text-3xl sm:text-4xl">🌌</span>
+                    <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-blue-500 via-indigo-300 to-purple-200 rounded-full mb-4 sm:mb-6 shadow-lg">
+                        <span className="text-3xl sm:text-4xl">🌠</span>
                     </div>
                     <h1 className="text-2xl sm:text-5xl font-bold bg-gradient-to-r from-purple-600 to-indigo-700 bg-clip-text text-transparent mb-2 sm:mb-4">
                         Space Weather Hub
@@ -51,10 +78,6 @@ const SpaceWeather = () => {
                     onTypeChange={setSelectedType}
                     dateRange={dateRange}
                     onDateRangeChange={setDateRange}
-                />
-
-                {/* Statistics Cards */}
-                <SpaceWeatherStats
                     notificationsData={notificationsData}
                 />
 
@@ -70,7 +93,7 @@ const SpaceWeather = () => {
                     </div>
                 ) : (
                     <div className="space-y-6 sm:space-y-8">
-                        {notificationsData?.map((event, index) => (
+                        {filteredData?.map((event, index) => (
                             <SpaceWeatherCard
                                 key={index}
                                 event={event}
@@ -79,10 +102,10 @@ const SpaceWeather = () => {
                     </div>
                 )}
 
-                {notificationsData?.length === 0 && !isLoading && (
+                {filteredData?.length === 0 && !isLoading && (
                     <div className="text-center py-12 sm:py-16">
                         <div className="inline-flex items-center justify-center w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-purple-100 to-indigo-200 rounded-full mb-4 sm:mb-6">
-                            <span className="text-4xl sm:text-6xl">🌌</span>
+                            <span className="text-4xl sm:text-6xl">🤖</span>
                         </div>
                         <h3 className="text-lg sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">
                             No space weather events found

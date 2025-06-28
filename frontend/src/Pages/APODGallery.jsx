@@ -15,7 +15,7 @@ const APODGallery = () => {
         queryKey: ['apod', count, isRandomMode],
         queryFn: async () => {
             const params = new URLSearchParams();
-            
+
             if (isRandomMode) {
                 // Use native APOD random feature
                 params.append('count', count.toString());
@@ -23,7 +23,7 @@ const APODGallery = () => {
                 // Default to today's image
                 params.append('count', '1');
             }
-            
+
             const response = await fetch(`${API_BASE_URL}/api/apod?${params}`);
             if (!response.ok) throw new Error('Failed to fetch APOD data');
             return response.json();
@@ -77,8 +77,11 @@ const APODGallery = () => {
             <div className="w-full px-2 py-6 sm:px-4 sm:py-8 max-w-full mx-auto">
                 {/* Header */}
                 <div className="text-center mb-6 sm:mb-8">
+                    <div className="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-black-800 via-gray-700 to-purple-800 rounded-full mb-4 sm:mb-6 shadow-lg">
+                        <span className="text-3xl sm:text-4xl">🌌</span>
+                    </div>
                     <h1 className="text-2xl sm:text-4xl font-bold text-white mb-2 sm:mb-4">
-                        🌌 Astronomy Picture of the Day Gallery
+                        Astronomy Picture of the Day Gallery
                     </h1>
                     <p className="text-base sm:text-xl text-gray-300">
                         Explore stunning cosmic imagery from NASA's APOD collection

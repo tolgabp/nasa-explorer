@@ -49,8 +49,8 @@ const App = () => {
                         <Route path="/apod-gallery" element={<APODGallery />} />
                     </Routes>
                 </Suspense>
-                <Toaster 
-                    position="top-right" 
+                <Toaster
+                    position="top-right"
                     toastOptions={{
                         style: {
                             background: '#1f2937',
@@ -67,7 +67,7 @@ const App = () => {
 const Navigation = () => {
     const location = useLocation();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    
+
     const isActive = (path) => {
         if (path === '/') return location.pathname === '/';
         return location.pathname.startsWith(path);
@@ -77,7 +77,7 @@ const Navigation = () => {
         { path: '/', label: 'Home', icon: '🚀', color: 'from-blue-500 to-indigo-600' },
         { path: '/mars-weather', label: 'Mars Weather', icon: '☄️', color: 'from-orange-500 to-red-600' },
         { path: '/earth-events', label: 'Earth Events', icon: '🌍', color: 'from-green-500 to-teal-600' },
-        { path: '/space-weather', label: 'Space Weather', icon: '🌌', color: 'from-purple-500 to-pink-600' },
+        { path: '/space-weather', label: 'Space Weather', icon: '🌠', color: 'from-purple-500 to-pink-600' },
         { path: '/apod-gallery', label: 'APOD Gallery', icon: '🌌', color: 'from-gray-800 to-black' },
     ];
 
@@ -86,8 +86,8 @@ const Navigation = () => {
             <div className="max-w-7xl mx-auto px-4">
                 <div className="flex items-center justify-between h-16">
                     <Link to="/" className="flex items-center space-x-3 group">
-                        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-200">
-                            🌍
+                        <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-indigo-800 rounded-full flex items-center justify-center text-white font-bold text-lg group-hover:scale-110 transition-transform duration-200">
+                            🛰️
                         </div>
                         <div>
                             <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
@@ -96,17 +96,16 @@ const Navigation = () => {
                             <p className="text-xs text-gray-400">Mission Control Center</p>
                         </div>
                     </Link>
-                    
+
                     <div className="hidden md:flex items-center space-x-2">
                         {navItems.map((item) => (
                             <Link
                                 key={item.path}
                                 to={item.path}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 ${
-                                    isActive(item.path)
+                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 ${isActive(item.path)
                                         ? `bg-gradient-to-r ${item.color} text-white shadow-lg`
                                         : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
-                                }`}
+                                    }`}
                             >
                                 <span className="mr-2">{item.icon}</span>
                                 {item.label}
@@ -133,11 +132,10 @@ const Navigation = () => {
                             <Link
                                 key={item.path}
                                 to={item.path}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                                    isActive(item.path)
+                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${isActive(item.path)
                                         ? `bg-gradient-to-r ${item.color} text-white shadow-lg`
                                         : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
-                                }`}
+                                    }`}
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 <span className="mr-2">{item.icon}</span>
@@ -175,7 +173,7 @@ const HomePage = () => {
             path: '/space-weather',
             title: 'Space Weather',
             description: 'Monitor solar flares, CMEs, and geomagnetic storms from the Sun',
-            icon: '🌌',
+            icon: '🌠',
             color: 'from-purple-500 to-pink-600',
             gradient: 'from-purple-500/20 to-pink-600/20',
             features: ['Solar activity', 'CME tracking', 'Geomagnetic storms', 'Space weather alerts']
@@ -240,15 +238,15 @@ const HomePage = () => {
                                         </svg>
                                     </div>
                                 </div>
-                                
+
                                 <h3 className="text-2xl font-bold mb-3 group-hover:text-white transition-colors">
                                     {feature.title}
                                 </h3>
-                                
+
                                 <p className="text-gray-400 mb-6 group-hover:text-gray-300 transition-colors">
                                     {feature.description}
                                 </p>
-                                
+
                                 <div className="space-y-2">
                                     {feature.features.map((feat, index) => (
                                         <div key={index} className="flex items-center space-x-2 text-sm text-gray-500 group-hover:text-gray-400 transition-colors">

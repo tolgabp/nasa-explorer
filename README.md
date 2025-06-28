@@ -6,6 +6,32 @@ A comprehensive full-stack space exploration application that provides real-time
 
 **Production Deployment:** [https://nasa-explorer-bb11a4ed8b3a.herokuapp.com/](https://nasa-explorer-bb11a4ed8b3a.herokuapp.com/)
 
+## 📱 App Screenshots & Demos
+
+### 🏠 Homepage & Navigation
+![Homepage](screenshots/homePage.gif)
+
+### 🌌 Space Weather Hub
+![Space Weather Hub](screenshots/SpaceWeatherHub.gif)
+
+### 🛰️ Astronomy Picture of the Day (APOD) Gallery
+![APOD Gallery](screenshots/APOD%20Gallery.gif)
+
+### 🌍 Earth Events Tracker
+![Earth Events](screenshots/EarthEvents.gif)
+
+### 🔴 Mars Weather Analytics
+![Mars Weather Analytics](screenshots/MarsWeather-Analytics.gif)
+
+### 📊 Mars Weather Timeline & Comparison
+![Mars Weather Timeline](screenshots/MarsWeather-SolTimeLine%26Comparison.gif)
+
+### 📮 Mars Weather Postcard Generator
+![Mars Weather Postcard](screenshots/MarsWeatherPostcard.gif)
+
+### 🎯 Onboarding Experience
+![Onboarding](screenshots/onboarding.gif)
+
 ## ✨ Features
 
 ### 🌍 Mars Weather Dashboard
