@@ -80,7 +80,7 @@ export const WeatherDashboard = ({ weatherData }) => {
             <div className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-gray-700">
                 <div className="text-center">
                     <div className="text-3xl mb-2">💨</div>
-                    <h4 className="text-lg font-semibold text-gray-300 mb-2">Wind</h4>
+                    <h4 className="text-lg font-semibold text-gray-300 mb-2">Wind Direction</h4>
                     <p className="text-2xl font-bold text-green-400">{weatherData.windSpeed?.toFixed(1) || 'N/A'}</p>
                     <p className="text-sm text-gray-400">m/s {weatherData.windDirection}</p>
                     {weatherData.minWindSpeed && weatherData.maxWindSpeed && (

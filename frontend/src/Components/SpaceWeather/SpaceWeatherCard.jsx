@@ -85,10 +85,6 @@ const SpaceWeatherCard = ({ event }) => {
                     
                     <div className="flex items-center justify-between text-sm">
                         <div className="bg-gray-100/50 rounded-lg px-4 py-2">
-                            <span className="font-semibold text-gray-700">ID:</span>
-                            <span className="ml-2 text-gray-600">{event.messageID}</span>
-                        </div>
-                        <div className="bg-gray-100/50 rounded-lg px-4 py-2">
                             <span className="font-semibold text-gray-700">URL:</span>
                             <span className="ml-2 text-gray-600">{event.messageURL}</span>
                         </div>

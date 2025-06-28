@@ -94,26 +94,26 @@ app.get('/', (req, res) => {
     if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html'));
     } else {
-        res.json({
-            message: 'NASA Explorer API',
-            version: '1.0.0',
-            environment: process.env.NODE_ENV || 'development',
-            timestamp: new Date().toISOString(),
-            endpoints: {
-                apod: '/api/apod',
-                insight_weather: '/api/insight_weather',
-                mars_photos: '/api/mars_photos',
-                eonet_events: '/api/eonet/events',
-                eonet_categories: '/api/eonet/categories',
-                donki_cme: '/api/donki/cme',
-                donki_solar_flares: '/api/donki/solar-flares',
-                donki_geomagnetic_storms: '/api/donki/geomagnetic-storms',
-                donki_notifications: '/api/donki/notifications',
-                cache_clear: '/api/cache/clear',
-                cache_stats: '/api/cache/stats',
-                health: '/api/health'
-            }
-        });
+    res.json({
+        message: 'NASA Explorer API',
+        version: '1.0.0',
+        environment: process.env.NODE_ENV || 'development',
+        timestamp: new Date().toISOString(),
+        endpoints: {
+            apod: '/api/apod',
+            insight_weather: '/api/insight_weather',
+            mars_photos: '/api/mars_photos',
+            eonet_events: '/api/eonet/events',
+            eonet_categories: '/api/eonet/categories',
+            donki_cme: '/api/donki/cme',
+            donki_solar_flares: '/api/donki/solar-flares',
+            donki_geomagnetic_storms: '/api/donki/geomagnetic-storms',
+            donki_notifications: '/api/donki/notifications',
+            cache_clear: '/api/cache/clear',
+            cache_stats: '/api/cache/stats',
+            health: '/api/health'
+        }
+    });
     }
 });
 

@@ -3,11 +3,12 @@ import { useQuery } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { API_BASE_URL } from '../config/api';
 import { EarthEventCard, EarthEventFilters } from '../Components/EarthEvents';
+import EarthEventStats from '../Components/EarthEvents/EarthEventStats';
 
 const EarthEvents = () => {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [selectedStatus, setSelectedStatus] = useState('open');
-    const [limit, setLimit] = useState(20);
+    const [limit, setLimit] = useState(10);
 
     // Fetch EONET events
     const { data: eventsData, isLoading: eventsLoading, error: eventsError } = useQuery({
@@ -87,6 +88,9 @@ const EarthEvents = () => {
                     onLimitChange={setLimit}
                     categoriesData={categoriesData}
                 />
+
+                {/* Events Stats */}
+                <EarthEventStats events={eventsData?.events} />
 
                 {/* Events Grid */}
                 {eventsLoading ? (

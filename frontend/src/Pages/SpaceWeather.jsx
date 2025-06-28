@@ -5,7 +5,7 @@ import { SpaceWeatherCard, SpaceWeatherStats, SpaceWeatherFilters } from '../Com
 
 const SpaceWeather = () => {
     const [selectedType, setSelectedType] = useState('all');
-    const [dateRange, setDateRange] = useState(30);
+    const [dateRange, setDateRange] = useState(7);
 
     // Fetch DONKI notifications
     const { data: notificationsData, isLoading: notificationsLoading } = useQuery({

@@ -138,23 +138,6 @@ const nasaService = {
         }, 300); // Cache weather data for 5 minutes
     },
 
-    // Get Mars Rover photos
-    async getMarsPhotos(params = {}) {
-        const cacheKey = `mars_photos:${JSON.stringify(params)}`;
-        
-        return getCachedOrFetch(cacheKey, async () => {
-            try {
-                // Add default parameters for Mars photos
-                const defaultParams = { sol: 1000, page: 2, ...params };
-                const url = buildUrl(NASA_CONFIG.ENDPOINTS.MARS_PHOTOS, defaultParams);
-                const response = await nasaApi.get(url);
-                return response.data;
-            } catch (error) {
-                throw createError.nasaAPI('Failed to fetch Mars photos', error.response?.status, error.response?.data);
-            }
-        }, 1800); // Cache photos for 30 minutes
-    },
-
     // Get EONET events (Earth events)
     async getEONETEvents(params = {}) {
         const cacheKey = `eonet_events:${JSON.stringify(params)}`;

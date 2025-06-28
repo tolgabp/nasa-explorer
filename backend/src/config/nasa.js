@@ -5,7 +5,6 @@ const NASA_CONFIG = {
     ENDPOINTS: {
         APOD: '/planetary/apod',
         INSIGHT_WEATHER: '/insight_weather/',
-        MARS_PHOTOS: '/mars-photos/api/v1/rovers/curiosity/photos',
         // EONET endpoints (Earth events)
         EONET_EVENTS: 'https://eonet.gsfc.nasa.gov/api/v2.1/events',
         EONET_CATEGORIES: 'https://eonet.gsfc.nasa.gov/api/v2.1/categories',

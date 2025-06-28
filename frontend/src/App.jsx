@@ -1,7 +1,8 @@
-import React, { Suspense, lazy, useState } from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'sonner';
+import OnboardingModal from './Components/OnboardingModal';
 // Lazy load pages
 const MarsWeather = lazy(() => import('./Pages/MarsWeather'));
 const EarthEvents = lazy(() => import('./Pages/EarthEvents'));
@@ -20,10 +21,25 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
+    const [showOnboarding, setShowOnboarding] = useState(false);
+
+    useEffect(() => {
+        const onboardingDone = localStorage.getItem('onboardingComplete');
+        if (!onboardingDone) {
+            setShowOnboarding(true);
+        }
+    }, []);
+
+    const handleOnboardingComplete = () => {
+        localStorage.setItem('onboardingComplete', 'true');
+        setShowOnboarding(false);
+    };
+
     return (
         <QueryClientProvider client={queryClient}>
             <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-950 to-black">
                 <Navigation />
+                {showOnboarding && <OnboardingModal onComplete={handleOnboardingComplete} />}
                 <Suspense fallback={<div className="flex justify-center items-center min-h-[40vh]"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div></div>}>
                     <Routes>
                         <Route path="/" element={<HomePage />} />

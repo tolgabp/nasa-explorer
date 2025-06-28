@@ -66,19 +66,6 @@ const APODModal = ({ image, onClose, onShareImage }) => {
                     <p className="text-gray-300 text-lg leading-relaxed whitespace-pre-wrap">
                         {image.explanation}
                     </p>
-                    
-                    <div className="mt-8 pt-6 border-t border-gray-700">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-400">
-                            <div>
-                                <span className="font-semibold">Media Type:</span>
-                                <span className="ml-2 capitalize">{image.media_type}</span>
-                            </div>
-                            <div>
-                                <span className="font-semibold">Service Version:</span>
-                                <span className="ml-2">{image.service_version}</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -3,7 +3,6 @@ const nasaService = require('../services/nasaService');
 const { 
     validateAPOD, 
     validateInSightWeather, 
-    validateMarsPhotos, 
     validateEONETEvents, 
     validateDONKI 
 } = require('../middleware/validation');
@@ -28,17 +27,6 @@ router.get('/insight_weather', nasaApiLimiter, validateInSightWeather, withCache
     try {
         logger.info('InSight weather request', { query: req.query });
         const data = await nasaService.getInSightWeather(req.query);
-        res.json(data);
-    } catch (error) {
-        next(error);
-    }
-});
-
-// Get Mars Rover photos
-router.get('/mars_photos', nasaApiLimiter, validateMarsPhotos, withCache('mars_photos', 1800), async (req, res, next) => {
-    try {
-        logger.info('Mars photos request', { query: req.query });
-        const data = await nasaService.getMarsPhotos(req.query);
         res.json(data);
     } catch (error) {
         next(error);
