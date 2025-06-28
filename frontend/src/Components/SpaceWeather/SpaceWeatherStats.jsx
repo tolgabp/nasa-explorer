@@ -1,6 +1,12 @@
 import React from 'react';
 
-const SpaceWeatherStats = ({ cmeData, solarFlaresData, geomagneticStormsData, notificationsData }) => {
+const SpaceWeatherStats = ({ notificationsData }) => {
+    // Calculate counts from the filtered notifications data
+    const cmeCount = notificationsData?.filter(event => event.messageType === 'CME').length || 0;
+    const solarFlaresCount = notificationsData?.filter(event => event.messageType === 'FLR').length || 0;
+    const geomagneticStormsCount = notificationsData?.filter(event => event.messageType === 'GST').length || 0;
+    const totalCount = notificationsData?.length || 0;
+
     return (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div className="group relative">
@@ -11,7 +17,7 @@ const SpaceWeatherStats = ({ cmeData, solarFlaresData, geomagneticStormsData, no
                         <div>
                             <p className="text-sm font-semibold text-gray-600">CMEs</p>
                             <p className="text-3xl font-bold text-gray-900">
-                                {cmeData?.length || 0}
+                                {cmeCount}
                             </p>
                         </div>
                     </div>
@@ -26,7 +32,7 @@ const SpaceWeatherStats = ({ cmeData, solarFlaresData, geomagneticStormsData, no
                         <div>
                             <p className="text-sm font-semibold text-gray-600">Solar Flares</p>
                             <p className="text-3xl font-bold text-gray-900">
-                                {solarFlaresData?.length || 0}
+                                {solarFlaresCount}
                             </p>
                         </div>
                     </div>
@@ -41,7 +47,7 @@ const SpaceWeatherStats = ({ cmeData, solarFlaresData, geomagneticStormsData, no
                         <div>
                             <p className="text-sm font-semibold text-gray-600">Geomagnetic Storms</p>
                             <p className="text-3xl font-bold text-gray-900">
-                                {geomagneticStormsData?.length || 0}
+                                {geomagneticStormsCount}
                             </p>
                         </div>
                     </div>
@@ -56,7 +62,7 @@ const SpaceWeatherStats = ({ cmeData, solarFlaresData, geomagneticStormsData, no
                         <div>
                             <p className="text-sm font-semibold text-gray-600">Total Events</p>
                             <p className="text-3xl font-bold text-gray-900">
-                                {notificationsData?.length || 0}
+                                {totalCount}
                             </p>
                         </div>
                     </div>

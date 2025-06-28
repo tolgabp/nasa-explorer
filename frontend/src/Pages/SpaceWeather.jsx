@@ -27,64 +27,7 @@ const SpaceWeather = () => {
         staleTime: 10 * 60 * 1000, // 10 minutes
     });
 
-    // Fetch CME data
-    const { data: cmeData, isLoading: cmeLoading } = useQuery({
-        queryKey: ['donki-cme', dateRange],
-        queryFn: async () => {
-            const endDate = new Date().toISOString().split('T')[0];
-            const startDate = new Date(Date.now() - dateRange * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-            
-            const params = new URLSearchParams({
-                startDate,
-                endDate
-            });
-            
-            const response = await fetch(`${API_BASE_URL}/api/donki/cme?${params}`);
-            if (!response.ok) throw new Error('Failed to fetch CME data');
-            return response.json();
-        },
-        staleTime: 10 * 60 * 1000, // 10 minutes
-    });
-
-    // Fetch Solar Flares
-    const { data: solarFlaresData, isLoading: solarFlaresLoading } = useQuery({
-        queryKey: ['donki-solar-flares', dateRange],
-        queryFn: async () => {
-            const endDate = new Date().toISOString().split('T')[0];
-            const startDate = new Date(Date.now() - dateRange * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-            
-            const params = new URLSearchParams({
-                startDate,
-                endDate
-            });
-            
-            const response = await fetch(`${API_BASE_URL}/api/donki/solar-flares?${params}`);
-            if (!response.ok) throw new Error('Failed to fetch solar flares');
-            return response.json();
-        },
-        staleTime: 10 * 60 * 1000, // 10 minutes
-    });
-
-    // Fetch Geomagnetic Storms
-    const { data: geomagneticStormsData, isLoading: geomagneticStormsLoading } = useQuery({
-        queryKey: ['donki-geomagnetic-storms', dateRange],
-        queryFn: async () => {
-            const endDate = new Date().toISOString().split('T')[0];
-            const startDate = new Date(Date.now() - dateRange * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-            
-            const params = new URLSearchParams({
-                startDate,
-                endDate
-            });
-            
-            const response = await fetch(`${API_BASE_URL}/api/donki/geomagnetic-storms?${params}`);
-            if (!response.ok) throw new Error('Failed to fetch geomagnetic storms');
-            return response.json();
-        },
-        staleTime: 10 * 60 * 1000, // 10 minutes
-    });
-
-    const isLoading = notificationsLoading || cmeLoading || solarFlaresLoading || geomagneticStormsLoading;
+    const isLoading = notificationsLoading;
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-purple-200 via-indigo-300 to-blue-500">
@@ -112,9 +55,6 @@ const SpaceWeather = () => {
 
                 {/* Statistics Cards */}
                 <SpaceWeatherStats
-                    cmeData={cmeData}
-                    solarFlaresData={solarFlaresData}
-                    geomagneticStormsData={geomagneticStormsData}
                     notificationsData={notificationsData}
                 />
 
