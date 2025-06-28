@@ -3,6 +3,7 @@ import { WeatherDashboard } from '../Components/Mars/WeatherDashboard';
 import { SolTimeline } from '../Components/Mars/SolTimeline';
 import { MarsPostcard } from '../Components/Mars/MarsPostcard';
 import { ComparisonWidget } from '../Components/Mars/ComparisonWidget';
+import { MarsWeatherCharts } from '../Components/Mars/MarsWeatherCharts';
 import { useQuery } from '@tanstack/react-query';
 import { toast } from '../Hooks/use-toast';
 import { getBackendUrl, API_CONFIG } from '../config/api';
@@ -184,6 +185,15 @@ const MarsWeather = () => {
                 {/* Weather Dashboard */}
                 <section>
                     <WeatherDashboard weatherData={selectedSol} />
+                </section>
+
+                {/* Weather Charts */}
+                <section>
+                    <h2 className="text-lg sm:text-xl font-semibold mb-4 flex items-center space-x-2">
+                        <span>📊</span>
+                        <span>Weather Analytics</span>
+                    </h2>
+                    <MarsWeatherCharts weatherData={marsWeatherData} />
                 </section>
 
                 {/* Earth Comparison */}
