@@ -75,25 +75,26 @@ app.use('/api', apiLimiter);
 // Routes
 app.use("/api", nasaRoutes);
 
-// Serve static files from React build in production
-if (process.env.NODE_ENV === 'production') {
-    // Serve static files from the React build directory
-    app.use(express.static(path.join(__dirname, '../../frontend/build')));
+// MONO REPO
+// // Serve static files from React build in production
+// if (process.env.NODE_ENV === 'production') {
+//     // Serve static files from the React build directory
+//     app.use(express.static(path.join(__dirname, '../../frontend/build')));
     
-    // Handle React routing, return all requests to React app
-    app.get('*', (req, res, next) => {
-        if (req.path.startsWith('/api')) {
-            return next();
-        }
-        res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html'));
-    });
-}
+//     // Handle React routing, return all requests to React app
+//     app.get('*', (req, res, next) => {
+//         if (req.path.startsWith('/api')) {
+//             return next();
+//         }
+//         res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html'));
+//     });
+// }
 
 // Root endpoint
 app.get('/', (req, res) => {
-    if (process.env.NODE_ENV === 'production') {
-        res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html'));
-    } else {
+    // if (process.env.NODE_ENV === 'production') {
+    //     res.sendFile(path.join(__dirname, '../../frontend/build', 'index.html'));
+    // } else {
     res.json({
         message: 'NASA Explorer API',
         version: '1.0.0',
@@ -115,7 +116,7 @@ app.get('/', (req, res) => {
         }
     });
     }
-});
+);
 
 // 404 handler
 app.use((req, res) => {
